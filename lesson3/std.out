@@ -1,0 +1,9 @@
+
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+sshd:x:126:65534::/run/sshd:/usr/sbin/nologin
+bibek1:x:1001:1001:Bibek Mishra:/home/bibek1:/bin/bash
+
+
+User name is: bibek1
+Passowrd is: 6f6a113efb61737531bd9cef1921404d4d9639f82b436389
+host IP is: 192.168.1.150 amd host name is bibek
