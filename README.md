@@ -7,7 +7,7 @@
 - act as a form of documentation
 - are fairly quick and easy to write
 *Anything you can do at the command line can be automated with a shell script*
-# Contents in this Repository
+## Basic Knowledge used in the lessons are
 ### The Shell Script File
 - Naming shell scripts and file extensions.
 - Shell script file permissions.
