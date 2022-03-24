@@ -26,12 +26,14 @@
 ### Creating Standard Output and Quoting
 - The echo builtin.
 - Single versus double quotes
-```"${VAR} gets expanded."
+```
+"${VAR} gets expanded."
 '${VAR} does NOT get expanded.'
 ```
 
 ### Getting Help for Shell Builtins
-```type: type [-afptP] name [name ...]
+```
+type: type [-afptP] name [name ...]
 For each NAME, indicate how it would be interpreted if used as a command name.
 help: help [-s] [pattern ...]
 Display helpful information about builtin commands.
@@ -42,24 +44,28 @@ Display helpful information about builtin commands.
 
 ### Shell Variables
 - The shell sets several variables automatically.
-```HOSTNAME
+```
+HOSTNAME
 RANDOM
 UID
 ```
 
 ### Command Substituion
-```VAR=$(command)
+```
+VAR=$(command)
 VAR=`command` # Old style.
 echo "Output of command: $(command)"
 ```
 
 ### Pseudocode Writting
-```#First, do this.
+```
+#First, do this.
 #Next, do this.
 #Finally, do that.
 ```
 ### The if statement
-```if [[ COMMANDS ]]
+```
+if [[ COMMANDS ]]
 then
  COMMANDS
 else
@@ -77,7 +83,8 @@ _Any non-zero exit status represents a failure._
 
 ### Sanity Checking
 _Don't assume; check!_
-```if [[ "${UID}" -ne 0 ]]
+```
+if [[ "${UID}" -ne 0 ]]
 then
  echo 'Please run as root.' >&2
  exit 1
@@ -112,14 +119,16 @@ Arguments vs Parameters
 * $# = The number of positional parameters.
 
 ### The for Loop
-```for VARIABLE in LIST
+```
+for VARIABLE in LIST
 do
  COMMANDS
 done
 ```
 
 ### The while Loop
-```while [[ COMMANDS ]]
+```
+while [[ COMMANDS ]]
 do
  COMMANDS
 done
