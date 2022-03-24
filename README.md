@@ -16,10 +16,9 @@
 
 ### The Basics
 - Shebang
-- #!/bin/bash
+> #!/bin/bash
 
-- Comments
-> #
+- Comments #
 
 - Variables
 > VAR="value"
@@ -27,14 +26,16 @@
 ### Creating Standard Output and Quoting
 - The echo builtin.
 - Single versus double quotes
-> "${VAR} gets expanded."
-> '${VAR} does NOT get expanded.'
+```"${VAR} gets expanded."
+'${VAR} does NOT get expanded.'
+```
 
 ### Getting Help for Shell Builtins
-> type: type [-afptP] name [name ...]
+```type: type [-afptP] name [name ...]
 For each NAME, indicate how it would be interpreted if used as a command name.
-> help: help [-s] [pattern ...]
+help: help [-s] [pattern ...]
 Display helpful information about builtin commands.
+```
 
 ### Getting Help for Linux Commands
 > man - format and display the on-line manual pages
