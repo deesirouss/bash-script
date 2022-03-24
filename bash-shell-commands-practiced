@@ -1,0 +1,147 @@
+Linux shell scripting
+
+Informations
+# - Sharp
+! - Bang
+#! - Shebang
+
+
+Few helpful commands
+
+type <command>
+e.g. type echo
+ - it will show the type of command
+type -a echo
+ - it will show the type as well as the path from where it is executing
+
+which -a head
+ - it will display all head command located in different paths
+
+hash -r 
+ - forget all remembered location(path) for bash commands
+
+sudo chage -E 0 <account-user-name>
+sudo passwd -l <account-user-name>
+ - to lock the account
+
+sudo chage -E -1 <account-user-name>
+sudo passwd -u <account-user-name>
+ - to unlock the account
+
+cut command
+-c by characters
+-b by bytes
+-d for delimiter used with field
+ - only handles one character delimiter - the awk command is used instead
+
+-f by field/column
+ - order of the output is as same as it appears in input - the awk command is used to change the order in output
+
+--output-delimiter - to use delimiter in the output 
+
+awk command
+awk -F 'DATA:' '{print $2}' <in>
+ - this command seperates 'DATA:' as delimiter and print the second field
+
+awk -F 'DATA:' '{print $2, $1}' <in> 
+ - ',' in the action {} gives output with space
+ - if ',' is omitted then two values are together in the output
+
+awk -F 'DATA:' -v OFS=',' '{print $2, $1}' <in>
+awk -F 'DATA:' '{print $2 "," $1}' <in>
+ - this command uses "," as a seperator in the output
+
+awk -F 'DATA:' '{print $NF}' <in>
+ - $NF to print the last field 
+
+awk -F 'DATA:' '{print $(NF - 1)}' <in>
+ - printing the second last field using mathematical calculation
+
+awk '{print $1, $2}' <in>
+ - by default awk uses white spaces (tab , space) as delimiter
+ 
+grep command
+grep '^char' - first/beginning of line
+grep 'char$' - end of the line
+grep '^char,char$' - force to match exact start and and end of the line
+grep -v 'match pattern'- gives result exceot the match pattern
+grep -Ev '^Active|^Proto' - -E is used for extended match
+grep -c 'char' <in> - to count how many times the char appeared in
+
+sort command 
+ - to sort in ascending order
+sort -r 
+ - to sort in descending order
+sort -n 
+ - to sort numerically in ascending order
+sort -nu
+ - to eliminate duplicate in sorting values
+sort -rn
+ - to sort numercially in descending order
+sort -h 
+ - sort on the based of human readable form
+sort -t ':' -k 3 -n
+ - this command uses ':' as seperator and -k 3 uses 3 filed to sort & -n for numerically sort
+
+uniq command 
+ - it compare the consecutive appearing two lines to comapre the duplication
+uniq -c 
+ - it counts how many times any duplication repeats with sorted data
+
+wc command
+ - by default it counts line , white space and characters(WS as delimiter)
+wc -l 
+ - to count lines only
+wc -w
+ - whitespace only
+wc -c
+ - characters only
+
+sed command
+sed 's/search-pattern/replacement-string/flags' path/to/the/file
+ - as find and replace command the first match in the line
+
+flags
+ - g      : for match all the occurrences pattern not only the first match in the line
+ - numbers: e.g 2 to match 2 occurrences pattern in the single line, if there is only one match then it will not replace the value
+ - i or I : for case insensitive
+ - w      : to write only matched lines to the new file
+
+sed 's/search-pattern/replacement-string/flags' path/to/the/file > saving/file/path
+ - to save the output of the sed command to the file
+
+sed -i.bak 's/search-pattern/replacement-string/flags' path/to/the/file
+ - to in-place-edit to the original file keeping the backup as file.bak
+
+sed 's/search-pattern/replacement-string/gw new-file.txt' path/to/the/file
+ - to write only the matched line changes to new-file
+
+echo '/home/jason' | sed 's#/home/jason#/export/users/jasonc#'
+echo '/home/jason' | sed 's:/home/jason:/export/users/jasonc:'
+ - to use pound sign to search and replace the backslash placements
+
+sed '/search-pattern/d' path/to/the/file
+ - to delete the search pattern line match from the file
+
+sed '/^#/d' path/to/the/file
+ - to match # in the begining of the file and delete the entire mach line
+
+sed '/^$/d' path/to/the/file
+ - to delete the blank line from the file
+
+sed '/^#/d ; /^$/d' path/to/the/file
+sed -e '/^#/d' -e '/^$/d' -e 's/search-pattern/replacement-string/flags' path/to/the/file
+ - to combine two search pattern in the single command
+ - through ';' or using '-e', we can combine two or more than two commands together
+
+sed -f <file-name> path/to/the/file
+ - we can also save each cammand using seperate lines in a file and provide sed command the file name to execute those patterns on
+
+sed 'address s/search-pattern/replacement-string/flags' path/to/the/file
+ - e.g if address is 2 then sed command will only execute on that line of the file
+ - i.e. sed '2 s/search-pattern/replacement-string/flags' path/to/the/file
+ - i.e. sed '/name/ s/search-pattern/replacement-string/flags' path/to/the/file
+   - this command will only execute the sed command on the line which matches name
+
+tee command
+tee -a append at the last of the file
